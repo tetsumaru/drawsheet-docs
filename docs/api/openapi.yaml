@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Rally Cloud Functions API
+  title: Drawsheet Cloud Functions API
   description: |
-    外部サービスから Rally へデータを連携するための REST API。
+    外部サービスから Drawsheet へデータを連携するための REST API。
 
     すべてのエンドポイントは API Gateway 経由で Bearer トークン認証のみで呼び出せます。
     リクエストボディは Firebase Callable 形式 (`{"data": {...}}`) でラップしてください。
@@ -13,7 +13,7 @@ servers:
     description: API Gateway
     variables:
       gateway-host:
-        default: rally-gateway-5eqguddt.an.gateway.dev
+        default: drawsheet-gateway-5eqguddt.an.gateway.dev
         description: API Gateway のホスト名（GCP コンソールで確認）
 
 security:

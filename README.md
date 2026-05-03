@@ -17,6 +17,7 @@ docs/
 ## API 仕様
 
 Drawsheet Cloud Functions API の仕様は OpenAPI 3.1 形式で定義されています。
+API リファレンス UI は [こちら](https://tetsumaru.github.io/drawsheet-docs/api/) から確認できます。
 
 - **認証**: Bearer トークン
 - **リクエスト形式**: Firebase Callable 形式 (`{"data": {...}}`)

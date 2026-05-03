@@ -288,6 +288,187 @@ paths:
                   status: INTERNAL
                   message: インポートに失敗しました
 
+  /importTeamTournament:
+    post:
+      operationId: importTeamTournament
+      summary: 団体戦大会・チーム一括インポート
+      description: |
+        団体戦の大会とチームエントリーを1リクエストで一括登録します。
+        個人戦の `importTournament` とは異なり、`teamEntries` コレクションにチーム・メンバーを保存します。
+
+        `tournamentId` を指定すると既存大会の更新モードになります。
+        更新モードでは、トークンの `organizationId` と既存大会の `organizationId` が一致する場合のみ更新を許可します。
+        既存の `teamEntries` は全て削除され、リクエストの内容で置き換えられます。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: "#/components/schemas/ImportTeamTournamentData"
+            examples:
+              basic:
+                summary: 2チームの団体戦登録
+                value:
+                  data:
+                    tournament:
+                      name: 第1回団体戦大会
+                      type: team
+                      courtCount: 4
+                      courtAssignment: sequential
+                    teamEntries:
+                      - name: チームA
+                        division: 男子
+                        members:
+                          - lastName: 山田
+                            firstName: 太郎
+                            lastNameFurigana: ヤマダ
+                            firstNameFurigana: タロウ
+                            rallyId: "badoraba:T1M1A1B2"
+                          - lastName: 佐藤
+                            firstName: 花子
+                            lastNameFurigana: サトウ
+                            firstNameFurigana: ハナコ
+                            rallyId: "badoraba:T1M2A1B2"
+                          - lastName: 鈴木
+                            firstName: 一郎
+                            lastNameFurigana: スズキ
+                            firstNameFurigana: イチロウ
+                            rallyId: "badoraba:T1M3A1B2"
+                          - lastName: 高橋
+                            firstName: 次郎
+                            lastNameFurigana: タカハシ
+                            firstNameFurigana: ジロウ
+                            rallyId: "badoraba:T1M4A1B2"
+                          - lastName: 田中
+                            firstName: 大輔
+                            lastNameFurigana: タナカ
+                            firstNameFurigana: ダイスケ
+                            rallyId: "badoraba:T1M5A1B2"
+                          - lastName: 伊藤
+                            firstName: 翔
+                            lastNameFurigana: イトウ
+                            firstNameFurigana: ショウ
+                            rallyId: "badoraba:T1M6A1B2"
+                      - name: チームB
+                        division: 男子
+                        members:
+                          - lastName: 渡辺
+                            firstName: 拓也
+                            lastNameFurigana: ワタナベ
+                            firstNameFurigana: タクヤ
+                            rallyId: "badoraba:T2M1A1B2"
+                          - lastName: 中村
+                            firstName: 優太
+                            lastNameFurigana: ナカムラ
+                            firstNameFurigana: ユウタ
+                            rallyId: "badoraba:T2M2A1B2"
+                          - lastName: 小林
+                            firstName: 健
+                            lastNameFurigana: コバヤシ
+                            firstNameFurigana: ケン
+                            rallyId: "badoraba:T2M3A1B2"
+                          - lastName: 加藤
+                            firstName: 直樹
+                            lastNameFurigana: カトウ
+                            firstNameFurigana: ナオキ
+                            rallyId: "badoraba:T2M4A1B2"
+                          - lastName: 吉田
+                            firstName: 誠
+                            lastNameFurigana: ヨシダ
+                            firstNameFurigana: マコト
+                            rallyId: "badoraba:T2M5A1B2"
+                          - lastName: 松本
+                            firstName: 大地
+                            lastNameFurigana: マツモト
+                            firstNameFurigana: ダイチ
+                            rallyId: "badoraba:T2M6A1B2"
+              update:
+                summary: 既存大会の更新（tournamentId 指定）
+                value:
+                  data:
+                    tournamentId: 550e8400-e29b-41d4-a716-446655440000
+                    tournament:
+                      name: 第1回団体戦大会（更新）
+                      type: team
+                      courtCount: 4
+                      courtAssignment: sequential
+                    teamEntries:
+                      - name: チームA（更新）
+                        division: 男子
+                        members:
+                          - lastName: 山田
+                            firstName: 太郎
+                            lastNameFurigana: ヤマダ
+                            firstNameFurigana: タロウ
+                            rallyId: "badoraba:T1M1A1B2"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/ImportTeamTournamentResult"
+              example:
+                result:
+                  tournamentId: 550e8400-e29b-41d4-a716-446655440000
+                  teamEntryIds:
+                    - 6ba7b810-9dad-11d1-80b4-00c04fd430c8
+                    - 6ba7b811-9dad-11d1-80b4-00c04fd430c8
+        "400":
+          description: バリデーションエラーまたはリクエスト形式エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        "403":
+          description: 権限エラー（スコープ不足、または更新モードで organizationId 不一致）
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthError"
+              examples:
+                scope_denied:
+                  summary: スコープ不足
+                  value:
+                    status: PERMISSION_DENIED
+                    message: このトークンには必要なスコープがありません
+                org_mismatch:
+                  summary: 更新モードで organizationId 不一致
+                  value:
+                    error:
+                      status: PERMISSION_DENIED
+                      message: この大会を更新する権限がありません
+        "404":
+          description: 更新モードで指定された大会が見つからない
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error:
+                  status: NOT_FOUND
+                  message: 指定された大会が見つかりません
+        "500":
+          description: サーバー内部エラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
   /syncOrganizationMembers:
     post:
       operationId: syncOrganizationMembers
@@ -672,6 +853,83 @@ components:
             type: string
             format: uuid
           description: 作成された参加者の ID（リクエストの participants 配列と同じ順序）
+
+    ImportTeamTournamentData:
+      type: object
+      required:
+        - tournament
+        - teamEntries
+      properties:
+        tournamentId:
+          type: string
+          format: uuid
+          description: |
+            既存大会の ID。指定すると更新モードになります。
+            トークンの organizationId と既存大会の organizationId が一致する場合のみ更新を許可します。
+        tournament:
+          $ref: "#/components/schemas/TournamentInput"
+        teamEntries:
+          type: array
+          items:
+            $ref: "#/components/schemas/TeamEntryInput"
+          minItems: 1
+          description: チームエントリーの配列
+
+    TeamEntryInput:
+      type: object
+      required:
+        - name
+        - members
+      properties:
+        name:
+          type: string
+          description: チーム名
+        division:
+          type: string
+          description: 部門（例: 男子、女子、混合）
+        members:
+          type: array
+          items:
+            $ref: "#/components/schemas/TeamMemberInput"
+          minItems: 1
+          description: チームメンバーの配列
+
+    TeamMemberInput:
+      type: object
+      required:
+        - lastName
+      properties:
+        lastName:
+          type: string
+          description: 姓
+        firstName:
+          type: string
+          description: 名
+        lastNameFurigana:
+          type: string
+          description: 姓ふりがな
+        firstNameFurigana:
+          type: string
+          description: 名ふりがな
+        rallyId:
+          type: string
+          description: |
+            外部サービスが採番するメンバーの一意識別子。`サービス名:ID本体` 形式（例: `badoraba:A1B2C3D4`）。省略可。
+          example: "badoraba:A1B2C3D4"
+
+    ImportTeamTournamentResult:
+      type: object
+      properties:
+        tournamentId:
+          type: string
+          format: uuid
+          description: 作成された大会の ID
+        teamEntryIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: 作成されたチームエントリーの ID（リクエストの teamEntries 配列と同じ順序）
 
     UpdateOrganizationData:
       type: object

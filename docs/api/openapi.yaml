@@ -52,7 +52,7 @@ paths:
                     participants:
                       - division: 一般
                         matchType: singles
-                        rallyId: "badoraba:550e8400"
+                        externalId: "badoraba:550e8400"
                         members:
                           - lastName: 山田
                             firstName: 太郎
@@ -61,7 +61,7 @@ paths:
                             team: ABC クラブ
                       - division: 一般
                         matchType: doubles
-                        rallyId: "badoraba:550e8401"
+                        externalId: "badoraba:550e8401"
                         members:
                           - lastName: 佐藤
                             firstName: 花子
@@ -80,14 +80,14 @@ paths:
                     participants:
                       - division: 男子1部
                         matchType: singles
-                        rallyId: "badoraba:A1B2C3D4"
+                        externalId: "badoraba:A1B2C3D4"
                         members:
                           - lastName: 山田
                             firstName: 太郎
                             team: ABC クラブ
                       - division: 男子1部
                         matchType: doubles
-                        rallyId: "badoraba:A1B2C3D5"
+                        externalId: "badoraba:A1B2C3D5"
                         members:
                           - lastName: 山田
                             firstName: 太郎
@@ -109,7 +109,7 @@ paths:
                       # 男子ダブルス 4ペア
                       - division: 男子ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:B2C3D4E5"
+                        externalId: "badoraba:B2C3D4E5"
                         members:
                           - lastName: 山田
                             firstName: 太郎
@@ -119,7 +119,7 @@ paths:
                             team: ABC クラブ
                       - division: 男子ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:B2C3D4E6"
+                        externalId: "badoraba:B2C3D4E6"
                         members:
                           - lastName: 鈴木
                             firstName: 一郎
@@ -129,7 +129,7 @@ paths:
                             team: DEF クラブ
                       - division: 男子ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:B2C3D4E7"
+                        externalId: "badoraba:B2C3D4E7"
                         members:
                           - lastName: 田中
                             firstName: 大輔
@@ -139,7 +139,7 @@ paths:
                             team: GHI クラブ
                       - division: 男子ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:B2C3D4E8"
+                        externalId: "badoraba:B2C3D4E8"
                         members:
                           - lastName: 渡辺
                             firstName: 拓也
@@ -150,7 +150,7 @@ paths:
                       # 混合ダブルス 4ペア
                       - division: 混合ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:C3D4E5F6"
+                        externalId: "badoraba:C3D4E5F6"
                         members:
                           - lastName: 小林
                             firstName: 美咲
@@ -160,7 +160,7 @@ paths:
                             team: ABC クラブ
                       - division: 混合ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:C3D4E5F7"
+                        externalId: "badoraba:C3D4E5F7"
                         members:
                           - lastName: 加藤
                             firstName: さくら
@@ -170,7 +170,7 @@ paths:
                             team: DEF クラブ
                       - division: 混合ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:C3D4E5F8"
+                        externalId: "badoraba:C3D4E5F8"
                         members:
                           - lastName: 松本
                             firstName: 葵
@@ -180,7 +180,7 @@ paths:
                             team: GHI クラブ
                       - division: 混合ダブルス
                         matchType: doubles
-                        rallyId: "badoraba:C3D4E5F9"
+                        externalId: "badoraba:C3D4E5F9"
                         members:
                           - lastName: 木村
                             firstName: 遥
@@ -328,32 +328,32 @@ paths:
                             firstName: 太郎
                             lastNameFurigana: ヤマダ
                             firstNameFurigana: タロウ
-                            rallyId: "badoraba:T1M1A1B2"
+                            externalId: "badoraba:T1M1A1B2"
                           - lastName: 佐藤
                             firstName: 花子
                             lastNameFurigana: サトウ
                             firstNameFurigana: ハナコ
-                            rallyId: "badoraba:T1M2A1B2"
+                            externalId: "badoraba:T1M2A1B2"
                           - lastName: 鈴木
                             firstName: 一郎
                             lastNameFurigana: スズキ
                             firstNameFurigana: イチロウ
-                            rallyId: "badoraba:T1M3A1B2"
+                            externalId: "badoraba:T1M3A1B2"
                           - lastName: 高橋
                             firstName: 次郎
                             lastNameFurigana: タカハシ
                             firstNameFurigana: ジロウ
-                            rallyId: "badoraba:T1M4A1B2"
+                            externalId: "badoraba:T1M4A1B2"
                           - lastName: 田中
                             firstName: 大輔
                             lastNameFurigana: タナカ
                             firstNameFurigana: ダイスケ
-                            rallyId: "badoraba:T1M5A1B2"
+                            externalId: "badoraba:T1M5A1B2"
                           - lastName: 伊藤
                             firstName: 翔
                             lastNameFurigana: イトウ
                             firstNameFurigana: ショウ
-                            rallyId: "badoraba:T1M6A1B2"
+                            externalId: "badoraba:T1M6A1B2"
                       - name: チームB
                         division: 男子
                         members:
@@ -361,32 +361,32 @@ paths:
                             firstName: 拓也
                             lastNameFurigana: ワタナベ
                             firstNameFurigana: タクヤ
-                            rallyId: "badoraba:T2M1A1B2"
+                            externalId: "badoraba:T2M1A1B2"
                           - lastName: 中村
                             firstName: 優太
                             lastNameFurigana: ナカムラ
                             firstNameFurigana: ユウタ
-                            rallyId: "badoraba:T2M2A1B2"
+                            externalId: "badoraba:T2M2A1B2"
                           - lastName: 小林
                             firstName: 健
                             lastNameFurigana: コバヤシ
                             firstNameFurigana: ケン
-                            rallyId: "badoraba:T2M3A1B2"
+                            externalId: "badoraba:T2M3A1B2"
                           - lastName: 加藤
                             firstName: 直樹
                             lastNameFurigana: カトウ
                             firstNameFurigana: ナオキ
-                            rallyId: "badoraba:T2M4A1B2"
+                            externalId: "badoraba:T2M4A1B2"
                           - lastName: 吉田
                             firstName: 誠
                             lastNameFurigana: ヨシダ
                             firstNameFurigana: マコト
-                            rallyId: "badoraba:T2M5A1B2"
+                            externalId: "badoraba:T2M5A1B2"
                           - lastName: 松本
                             firstName: 大地
                             lastNameFurigana: マツモト
                             firstNameFurigana: ダイチ
-                            rallyId: "badoraba:T2M6A1B2"
+                            externalId: "badoraba:T2M6A1B2"
               update:
                 summary: 既存大会の更新（tournamentId 指定）
                 value:
@@ -405,7 +405,7 @@ paths:
                             firstName: 太郎
                             lastNameFurigana: ヤマダ
                             firstNameFurigana: タロウ
-                            rallyId: "badoraba:T1M1A1B2"
+                            externalId: "badoraba:T1M1A1B2"
       responses:
         "200":
           description: 成功
@@ -812,7 +812,7 @@ components:
           description: |
             参加選手の配列。シングルスは 1 件、ダブルスは 2 件。
             将来的にトリプルス等にも対応可能な構造。
-        rallyId:
+        externalId:
           type: string
           description: |
             外部サービスが採番する参加者の一意識別子。`サービス名:ID本体` 形式で指定する（例: `badoraba:A1B2C3D4`）。
@@ -886,7 +886,7 @@ components:
           description: チーム名
         division:
           type: string
-          description: 部門（例: 男子、女子、混合）
+          description: "部門（例: 男子、女子、混合）"
         members:
           type: array
           items:
@@ -911,7 +911,7 @@ components:
         firstNameFurigana:
           type: string
           description: 名ふりがな
-        rallyId:
+        externalId:
           type: string
           description: |
             外部サービスが採番するメンバーの一意識別子。`サービス名:ID本体` 形式（例: `badoraba:A1B2C3D4`）。省略可。

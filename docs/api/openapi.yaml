@@ -10,11 +10,17 @@ info:
 
 servers:
   - url: https://{gateway-host}
-    description: API Gateway
+    description: API Gateway (dev)
     variables:
       gateway-host:
-        default: rally-gateway-5eqguddt.an.gateway.dev
-        description: API Gateway のホスト名（GCP コンソールで確認）
+        default: drawsheet-gateway-b3ttwoz8.an.gateway.dev
+        description: API Gateway のホスト名
+  - url: https://{gateway-host}
+    description: API Gateway (prd)
+    variables:
+      gateway-host:
+        default: drawsheet-gateway-4cwapjzw.an.gateway.dev
+        description: API Gateway のホスト名
 
 security:
   - BearerAuth: []

@@ -472,9 +472,9 @@ paths:
   /syncOrganizationMembers:
     post:
       operationId: syncOrganizationMembers
-      summary: 団体メンバーの同期
+      summary: 協会メンバーの同期
       description: |
-        指定した団体のメンバーをメールアドレスのリストで同期します。
+        指定した協会のメンバーをメールアドレスのリストで同期します。
         既存メンバーとの差分を計算し、追加・削除を行います。
         オーナーロールのメンバーは削除対象から除外されます。
       requestBody:
@@ -561,7 +561,7 @@ paths:
                     status: PERMISSION_DENIED
                     message: このトークンには必要なスコープがありません
         "404":
-          description: 団体が存在しない
+          description: 協会が存在しない
           content:
             application/json:
               schema:
@@ -584,9 +584,9 @@ paths:
   /updateOrganization:
     post:
       operationId: updateOrganization
-      summary: 団体情報の更新
+      summary: 協会情報の更新
       description: |
-        指定した団体の名前や都道府県を更新します。
+        指定した協会の名前や都道府県を更新します。
         更新したいフィールドのみを送信してください（部分更新）。
       requestBody:
         required: true
@@ -605,7 +605,7 @@ paths:
                 value:
                   data:
                     organizationId: org-abc123
-                    name: 新しい団体名
+                    name: 新しい協会名
               update_prefecture:
                 summary: 都道府県のみ更新
                 value:
@@ -617,7 +617,7 @@ paths:
                 value:
                   data:
                     organizationId: org-abc123
-                    name: 新しい団体名
+                    name: 新しい協会名
                     prefecture: 大阪府
       responses:
         "200":
@@ -676,7 +676,7 @@ paths:
                     status: PERMISSION_DENIED
                     message: このトークンには必要なスコープがありません
         "404":
-          description: 団体が存在しない
+          description: 協会が存在しない
           content:
             application/json:
               schema:
@@ -694,7 +694,7 @@ paths:
               example:
                 error:
                   status: INTERNAL
-                  message: 団体情報の更新に失敗しました
+                  message: 協会情報の更新に失敗しました
 
 components:
   securitySchemes:
@@ -938,10 +938,10 @@ components:
       properties:
         organizationId:
           type: string
-          description: 更新対象の団体 ID
+          description: 更新対象の協会 ID
         name:
           type: string
-          description: 団体名（省略時は更新しない）
+          description: 協会名（省略時は更新しない）
         prefecture:
           type: string
           description: 都道府県（省略時は更新しない）
@@ -951,7 +951,7 @@ components:
       properties:
         organizationId:
           type: string
-          description: 更新された団体の ID
+          description: 更新された協会の ID
 
     SyncOrganizationMembersData:
       type: object
@@ -961,7 +961,7 @@ components:
       properties:
         organizationId:
           type: string
-          description: 同期対象の団体 ID
+          description: 同期対象の協会 ID
         emails:
           type: array
           items:

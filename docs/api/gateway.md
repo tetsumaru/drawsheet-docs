@@ -15,7 +15,7 @@ curl -s -X POST \
   -d '{"data": { ... }}'
 ```
 
-- `GATEWAY_HOST`: API Gateway のホスト名（例: `drawsheet-gateway-5eqguddt.an.gateway.dev`）
+- `GATEWAY_HOST`: API Gateway のホスト名（例: `rally-gateway-5eqguddt.an.gateway.dev`）
 - `TOKEN`: Drawsheet の API トークン（`/issue-token` スキルで発行）
 - `<endpoint>`: `importTournament`, `createTournament`, `addParticipants`, `updateOrganization` など
 

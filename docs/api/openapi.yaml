@@ -73,6 +73,23 @@ paths:
                             firstName: 花子
                           - lastName: 鈴木
                             firstName: 一郎
+              with_org_id:
+                summary: organizationId を指定して協会に紐づけ
+                value:
+                  data:
+                    organizationId: 550e8400-e29b-41d4-a716-446655440099
+                    tournament:
+                      name: 静岡県春季大会
+                      type: individual
+                      courtCount: 4
+                      courtAssignment: sequential
+                      finalsRule: none
+                    participants:
+                      - division: 一般
+                        matchType: singles
+                        members:
+                          - lastName: 山田
+                            firstName: 太郎
               multi_entry:
                 summary: 同一選手がシングルスとダブルス両方にエントリー
                 value:
@@ -272,7 +289,7 @@ paths:
                     status: UNAUTHENTICATED
                     message: トークンの有効期限が切れています
         "403":
-          description: 権限エラー（トークンは有効だがスコープ不足）
+          description: 権限エラー（スコープ不足、または organizationId 不一致）
           content:
             application/json:
               schema:
@@ -283,6 +300,12 @@ paths:
                   value:
                     status: PERMISSION_DENIED
                     message: このトークンには必要なスコープがありません
+                org_mismatch:
+                  summary: organizationId 不一致
+                  value:
+                    error:
+                      status: PERMISSION_DENIED
+                      message: 指定された organizationId はこのトークンでは使用できません
         "500":
           description: サーバー内部エラー
           content:
@@ -303,7 +326,7 @@ paths:
         個人戦の `importTournament` とは異なり、`teamEntries` コレクションにチーム・メンバーを保存します。
 
         `tournamentId` を指定すると既存大会の更新モードになります。
-        更新モードでは、トークンの `organizationId` と既存大会の `organizationId` が一致する場合のみ更新を許可します。
+        更新モードでは、リクエストまたはトークンの `organizationId` と既存大会の `organizationId` が一致する場合のみ更新を許可します。
         既存の `teamEntries` は全て削除され、リクエストの内容で置き換えられます。
       requestBody:
         required: true
@@ -393,6 +416,24 @@ paths:
                             lastNameFurigana: マツモト
                             firstNameFurigana: ダイチ
                             externalId: "badoraba:T2M6A1B2"
+              with_org_id:
+                summary: organizationId を指定して協会に紐づけ
+                value:
+                  data:
+                    organizationId: 550e8400-e29b-41d4-a716-446655440099
+                    tournament:
+                      name: 静岡県団体戦
+                      type: team
+                      courtCount: 4
+                      courtAssignment: sequential
+                    teamEntries:
+                      - name: チームA
+                        division: 男子
+                        members:
+                          - lastName: 山田
+                            firstName: 太郎
+                          - lastName: 佐藤
+                            firstName: 花子
               update:
                 summary: 既存大会の更新（tournamentId 指定）
                 value:
@@ -441,7 +482,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AuthError"
         "403":
-          description: 権限エラー（スコープ不足、または更新モードで organizationId 不一致）
+          description: 権限エラー（スコープ不足、organizationId 不一致、または更新モードで既存大会の organizationId 不一致）
           content:
             application/json:
               schema:
@@ -453,7 +494,13 @@ paths:
                     status: PERMISSION_DENIED
                     message: このトークンには必要なスコープがありません
                 org_mismatch:
-                  summary: 更新モードで organizationId 不一致
+                  summary: organizationId 不一致
+                  value:
+                    error:
+                      status: PERMISSION_DENIED
+                      message: 指定された organizationId はこのトークンでは使用できません
+                update_org_mismatch:
+                  summary: 更新モードで既存大会の organizationId 不一致
                   value:
                     error:
                       status: PERMISSION_DENIED
@@ -783,6 +830,12 @@ components:
           items:
             $ref: "#/components/schemas/ParticipantInput"
           description: 参加者の配列（空配列も可）
+        organizationId:
+          type: string
+          description: |
+            大会を紐づける協会の ID。省略時はトークンに紐づく organizationId を使用。
+            トークンに organizationId が設定されている場合、異なる値を指定すると 403 エラーになる。
+            トークンに organizationId が未設定（管理者トークン）の場合は任意の値を指定可能。
 
     TournamentInput:
       type: object
@@ -930,7 +983,7 @@ components:
           format: uuid
           description: |
             既存大会の ID。指定すると更新モードになります。
-            トークンの organizationId と既存大会の organizationId が一致する場合のみ更新を許可します。
+            リクエストまたはトークンの organizationId と既存大会の organizationId が一致する場合のみ更新を許可します。
         tournament:
           $ref: "#/components/schemas/TournamentInput"
         teamEntries:
@@ -939,6 +992,12 @@ components:
             $ref: "#/components/schemas/TeamEntryInput"
           minItems: 1
           description: チームエントリーの配列
+        organizationId:
+          type: string
+          description: |
+            大会を紐づける協会の ID。省略時はトークンに紐づく organizationId を使用。
+            トークンに organizationId が設定されている場合、異なる値を指定すると 403 エラーになる。
+            トークンに organizationId が未設定（管理者トークン）の場合は任意の値を指定可能。
 
     TeamEntryInput:
       type: object

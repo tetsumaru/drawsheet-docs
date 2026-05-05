@@ -587,6 +587,65 @@ paths:
                   status: INTERNAL
                   message: メンバー同期に失敗しました
 
+  /createOrganization:
+    post:
+      operationId: createOrganization
+      summary: 協会の新規作成
+      description: |
+        新しい協会を作成します。サーバー側で UUID を生成し、organizationId として返却します。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  $ref: "#/components/schemas/CreateOrganizationData"
+            examples:
+              basic:
+                summary: 名前のみ
+                value:
+                  data:
+                    name: あざらしバドミントン協会
+              with_prefecture:
+                summary: 都道府県付き
+                value:
+                  data:
+                    name: あざらしバドミントン協会
+                    prefecture: 静岡県
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: "#/components/schemas/CreateOrganizationResult"
+              example:
+                result:
+                  organizationId: 550e8400-e29b-41d4-a716-446655440000
+        "400":
+          description: バリデーションエラー
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                missing_name:
+                  summary: name が空
+                  value:
+                    error:
+                      status: INVALID_ARGUMENT
+                      message: バリデーションエラーがあります
+                      details:
+                        - field: name
+                          message: name は必須です
+
   /updateOrganization:
     post:
       operationId: updateOrganization
@@ -936,6 +995,26 @@ components:
             type: string
             format: uuid
           description: 作成されたチームエントリーの ID（リクエストの teamEntries 配列と同じ順序）
+
+    CreateOrganizationData:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: 協会名
+        prefecture:
+          type: string
+          description: 都道府県（任意）
+
+    CreateOrganizationResult:
+      type: object
+      properties:
+        organizationId:
+          type: string
+          format: uuid
+          description: 作成された協会の ID
 
     UpdateOrganizationData:
       type: object

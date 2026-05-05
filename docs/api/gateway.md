@@ -28,6 +28,7 @@ curl -s -X POST \
 | `/importTournament` | `importTournament` | 大会・参加者一括インポート |
 | `/createTournament` | `createTournament` | 大会作成 |
 | `/addParticipants` | `addParticipants` | 参加者追加 |
+| `/createOrganization` | `createOrganization` | 協会新規作成 |
 | `/updateOrganization` | `updateOrganization` | 協会情報更新 |
 
 ## 旧 Cloud Run URL からの移行

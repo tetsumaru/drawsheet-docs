@@ -25,10 +25,13 @@ curl -s -X POST \
 
 | エンドポイント | スコープ | 説明 |
 |---|---|---|
-| `/importTournament` | `importTournament` | 大会・参加者一括インポート |
-| `/createTournament` | `createTournament` | 大会作成 |
 | `/addParticipants` | `addParticipants` | 参加者追加 |
+| `/createLeague` | `createLeague` | リーグ作成 |
 | `/createOrganization` | `createOrganization` | 協会新規作成 |
+| `/createTournament` | `createTournament` | 大会作成 |
+| `/importTeamTournament` | `importTeamTournament` | 団体戦一括インポート |
+| `/importTournament` | `importTournament` | 大会・参加者一括インポート |
+| `/syncOrganizationMembers` | `syncOrganizationMembers` | 協会メンバー同期 |
 | `/updateOrganization` | `updateOrganization` | 協会情報更新 |
 
 ## 旧 Cloud Run URL からの移行

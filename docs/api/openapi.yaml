@@ -58,21 +58,22 @@ paths:
                     participants:
                       - division: 一般
                         matchType: singles
-                        externalId: "badoraba:550e8400"
                         members:
                           - lastName: 山田
                             firstName: 太郎
                             lastNameFurigana: ヤマダ
                             firstNameFurigana: タロウ
                             team: ABC クラブ
+                            externalId: "badoraba:00000001"
                       - division: 一般
                         matchType: doubles
-                        externalId: "badoraba:550e8401"
                         members:
                           - lastName: 佐藤
                             firstName: 花子
+                            externalId: "badoraba:00000002"
                           - lastName: 鈴木
                             firstName: 一郎
+                            externalId: "badoraba:00000003"
               with_org_id:
                 summary: organizationId を指定して協会に紐づけ
                 value:
@@ -103,21 +104,22 @@ paths:
                     participants:
                       - division: 男子1部
                         matchType: singles
-                        externalId: "badoraba:A1B2C3D4"
                         members:
                           - lastName: 山田
                             firstName: 太郎
                             team: ABC クラブ
+                            externalId: "badoraba:A1B2C3D4"
                       - division: 男子1部
                         matchType: doubles
-                        externalId: "badoraba:A1B2C3D5"
                         members:
                           - lastName: 山田
                             firstName: 太郎
                             team: ABC クラブ
+                            externalId: "badoraba:A1B2C3D4"
                           - lastName: 佐藤
                             firstName: 次郎
                             team: ABC クラブ
+                            externalId: "badoraba:A1B2C3D5"
               doubles_divisions:
                 summary: ダブルスのみ・種別違いで4ペアずつ
                 value:
@@ -132,85 +134,93 @@ paths:
                       # 男子ダブルス 4ペア
                       - division: 男子ダブルス
                         matchType: doubles
-                        externalId: "badoraba:B2C3D4E5"
                         members:
                           - lastName: 山田
                             firstName: 太郎
                             team: ABC クラブ
+                            externalId: "badoraba:B2C3D401"
                           - lastName: 佐藤
                             firstName: 次郎
                             team: ABC クラブ
+                            externalId: "badoraba:B2C3D402"
                       - division: 男子ダブルス
                         matchType: doubles
-                        externalId: "badoraba:B2C3D4E6"
                         members:
                           - lastName: 鈴木
                             firstName: 一郎
                             team: DEF クラブ
+                            externalId: "badoraba:B2C3D403"
                           - lastName: 高橋
                             firstName: 健太
                             team: DEF クラブ
+                            externalId: "badoraba:B2C3D404"
                       - division: 男子ダブルス
                         matchType: doubles
-                        externalId: "badoraba:B2C3D4E7"
                         members:
                           - lastName: 田中
                             firstName: 大輔
                             team: GHI クラブ
+                            externalId: "badoraba:B2C3D405"
                           - lastName: 伊藤
                             firstName: 翔
                             team: GHI クラブ
+                            externalId: "badoraba:B2C3D406"
                       - division: 男子ダブルス
                         matchType: doubles
-                        externalId: "badoraba:B2C3D4E8"
                         members:
                           - lastName: 渡辺
                             firstName: 拓也
                             team: JKL クラブ
+                            externalId: "badoraba:B2C3D407"
                           - lastName: 中村
                             firstName: 優太
                             team: JKL クラブ
+                            externalId: "badoraba:B2C3D408"
                       # 混合ダブルス 4ペア
                       - division: 混合ダブルス
                         matchType: doubles
-                        externalId: "badoraba:C3D4E5F6"
                         members:
                           - lastName: 小林
                             firstName: 美咲
                             team: ABC クラブ
+                            externalId: "badoraba:C3D4E501"
                           - lastName: 山本
                             firstName: 隆
                             team: ABC クラブ
+                            externalId: "badoraba:C3D4E502"
                       - division: 混合ダブルス
                         matchType: doubles
-                        externalId: "badoraba:C3D4E5F7"
                         members:
                           - lastName: 加藤
                             firstName: さくら
                             team: DEF クラブ
+                            externalId: "badoraba:C3D4E503"
                           - lastName: 吉田
                             firstName: 誠
                             team: DEF クラブ
+                            externalId: "badoraba:C3D4E504"
                       - division: 混合ダブルス
                         matchType: doubles
-                        externalId: "badoraba:C3D4E5F8"
                         members:
                           - lastName: 松本
                             firstName: 葵
                             team: GHI クラブ
+                            externalId: "badoraba:C3D4E505"
                           - lastName: 井上
                             firstName: 大地
                             team: GHI クラブ
+                            externalId: "badoraba:C3D4E506"
                       - division: 混合ダブルス
                         matchType: doubles
-                        externalId: "badoraba:C3D4E5F9"
                         members:
                           - lastName: 木村
                             firstName: 遥
                             team: JKL クラブ
+                            externalId: "badoraba:C3D4E507"
                           - lastName: 林
                             firstName: 裕樹
                             team: JKL クラブ
+                            externalId: "badoraba:C3D4E508"
       responses:
         "200":
           description: 成功
@@ -930,12 +940,6 @@ components:
           description: |
             参加選手の配列。シングルスは 1 件、ダブルスは 2 件。
             将来的にトリプルス等にも対応可能な構造。
-        externalId:
-          type: string
-          description: |
-            外部サービスが採番する参加者の一意識別子。`サービス名:ID本体` 形式で指定する（例: `badoraba:A1B2C3D4`）。
-            大会をまたいだ参加者の紐付けに使用される。省略可。
-          example: "badoraba:A1B2C3D4"
 
     MemberInput:
       type: object
@@ -957,6 +961,12 @@ components:
         team:
           type: string
           description: 所属チーム
+        externalId:
+          type: string
+          description: |
+            外部サービスが採番するメンバーの一意識別子。`サービス名:ID本体` 形式（例: `badoraba:00000001`）。
+            個人単位での外部 ID 管理に使用。participant レベルの `externalId` はペア単位、こちらは個人単位。省略可。
+          example: "badoraba:00000001"
 
     ImportTournamentResult:
       type: object

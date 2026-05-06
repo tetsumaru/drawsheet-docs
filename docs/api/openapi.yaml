@@ -64,16 +64,16 @@ paths:
                             lastNameFurigana: ヤマダ
                             firstNameFurigana: タロウ
                             team: ABC クラブ
-                            externalId: "badoraba:00000001"
+                            externalId: "00000001"
                       - division: 一般
                         matchType: doubles
                         members:
                           - lastName: 佐藤
                             firstName: 花子
-                            externalId: "badoraba:00000002"
+                            externalId: "00000002"
                           - lastName: 鈴木
                             firstName: 一郎
-                            externalId: "badoraba:00000003"
+                            externalId: "00000003"
               with_org_id:
                 summary: organizationId を指定して協会に紐づけ
                 value:
@@ -108,18 +108,18 @@ paths:
                           - lastName: 山田
                             firstName: 太郎
                             team: ABC クラブ
-                            externalId: "badoraba:A1B2C3D4"
+                            externalId: "A1B2C3D4"
                       - division: 男子1部
                         matchType: doubles
                         members:
                           - lastName: 山田
                             firstName: 太郎
                             team: ABC クラブ
-                            externalId: "badoraba:A1B2C3D4"
+                            externalId: "A1B2C3D4"
                           - lastName: 佐藤
                             firstName: 次郎
                             team: ABC クラブ
-                            externalId: "badoraba:A1B2C3D5"
+                            externalId: "A1B2C3D5"
               doubles_divisions:
                 summary: ダブルスのみ・種別違いで4ペアずつ
                 value:
@@ -138,44 +138,44 @@ paths:
                           - lastName: 山田
                             firstName: 太郎
                             team: ABC クラブ
-                            externalId: "badoraba:B2C3D401"
+                            externalId: "B2C3D401"
                           - lastName: 佐藤
                             firstName: 次郎
                             team: ABC クラブ
-                            externalId: "badoraba:B2C3D402"
+                            externalId: "B2C3D402"
                       - division: 男子ダブルス
                         matchType: doubles
                         members:
                           - lastName: 鈴木
                             firstName: 一郎
                             team: DEF クラブ
-                            externalId: "badoraba:B2C3D403"
+                            externalId: "B2C3D403"
                           - lastName: 高橋
                             firstName: 健太
                             team: DEF クラブ
-                            externalId: "badoraba:B2C3D404"
+                            externalId: "B2C3D404"
                       - division: 男子ダブルス
                         matchType: doubles
                         members:
                           - lastName: 田中
                             firstName: 大輔
                             team: GHI クラブ
-                            externalId: "badoraba:B2C3D405"
+                            externalId: "B2C3D405"
                           - lastName: 伊藤
                             firstName: 翔
                             team: GHI クラブ
-                            externalId: "badoraba:B2C3D406"
+                            externalId: "B2C3D406"
                       - division: 男子ダブルス
                         matchType: doubles
                         members:
                           - lastName: 渡辺
                             firstName: 拓也
                             team: JKL クラブ
-                            externalId: "badoraba:B2C3D407"
+                            externalId: "B2C3D407"
                           - lastName: 中村
                             firstName: 優太
                             team: JKL クラブ
-                            externalId: "badoraba:B2C3D408"
+                            externalId: "B2C3D408"
                       # 混合ダブルス 4ペア
                       - division: 混合ダブルス
                         matchType: doubles
@@ -183,44 +183,44 @@ paths:
                           - lastName: 小林
                             firstName: 美咲
                             team: ABC クラブ
-                            externalId: "badoraba:C3D4E501"
+                            externalId: "C3D4E501"
                           - lastName: 山本
                             firstName: 隆
                             team: ABC クラブ
-                            externalId: "badoraba:C3D4E502"
+                            externalId: "C3D4E502"
                       - division: 混合ダブルス
                         matchType: doubles
                         members:
                           - lastName: 加藤
                             firstName: さくら
                             team: DEF クラブ
-                            externalId: "badoraba:C3D4E503"
+                            externalId: "C3D4E503"
                           - lastName: 吉田
                             firstName: 誠
                             team: DEF クラブ
-                            externalId: "badoraba:C3D4E504"
+                            externalId: "C3D4E504"
                       - division: 混合ダブルス
                         matchType: doubles
                         members:
                           - lastName: 松本
                             firstName: 葵
                             team: GHI クラブ
-                            externalId: "badoraba:C3D4E505"
+                            externalId: "C3D4E505"
                           - lastName: 井上
                             firstName: 大地
                             team: GHI クラブ
-                            externalId: "badoraba:C3D4E506"
+                            externalId: "C3D4E506"
                       - division: 混合ダブルス
                         matchType: doubles
                         members:
                           - lastName: 木村
                             firstName: 遥
                             team: JKL クラブ
-                            externalId: "badoraba:C3D4E507"
+                            externalId: "C3D4E507"
                           - lastName: 林
                             firstName: 裕樹
                             team: JKL クラブ
-                            externalId: "badoraba:C3D4E508"
+                            externalId: "C3D4E508"
       responses:
         "200":
           description: 成功
@@ -367,32 +367,32 @@ paths:
                             firstName: 太郎
                             lastNameFurigana: ヤマダ
                             firstNameFurigana: タロウ
-                            externalId: "badoraba:T1M1A1B2"
+                            externalId: "T1M1A1B2"
                           - lastName: 佐藤
                             firstName: 花子
                             lastNameFurigana: サトウ
                             firstNameFurigana: ハナコ
-                            externalId: "badoraba:T1M2A1B2"
+                            externalId: "T1M2A1B2"
                           - lastName: 鈴木
                             firstName: 一郎
                             lastNameFurigana: スズキ
                             firstNameFurigana: イチロウ
-                            externalId: "badoraba:T1M3A1B2"
+                            externalId: "T1M3A1B2"
                           - lastName: 高橋
                             firstName: 次郎
                             lastNameFurigana: タカハシ
                             firstNameFurigana: ジロウ
-                            externalId: "badoraba:T1M4A1B2"
+                            externalId: "T1M4A1B2"
                           - lastName: 田中
                             firstName: 大輔
                             lastNameFurigana: タナカ
                             firstNameFurigana: ダイスケ
-                            externalId: "badoraba:T1M5A1B2"
+                            externalId: "T1M5A1B2"
                           - lastName: 伊藤
                             firstName: 翔
                             lastNameFurigana: イトウ
                             firstNameFurigana: ショウ
-                            externalId: "badoraba:T1M6A1B2"
+                            externalId: "T1M6A1B2"
                       - name: チームB
                         division: 男子
                         members:
@@ -400,32 +400,32 @@ paths:
                             firstName: 拓也
                             lastNameFurigana: ワタナベ
                             firstNameFurigana: タクヤ
-                            externalId: "badoraba:T2M1A1B2"
+                            externalId: "T2M1A1B2"
                           - lastName: 中村
                             firstName: 優太
                             lastNameFurigana: ナカムラ
                             firstNameFurigana: ユウタ
-                            externalId: "badoraba:T2M2A1B2"
+                            externalId: "T2M2A1B2"
                           - lastName: 小林
                             firstName: 健
                             lastNameFurigana: コバヤシ
                             firstNameFurigana: ケン
-                            externalId: "badoraba:T2M3A1B2"
+                            externalId: "T2M3A1B2"
                           - lastName: 加藤
                             firstName: 直樹
                             lastNameFurigana: カトウ
                             firstNameFurigana: ナオキ
-                            externalId: "badoraba:T2M4A1B2"
+                            externalId: "T2M4A1B2"
                           - lastName: 吉田
                             firstName: 誠
                             lastNameFurigana: ヨシダ
                             firstNameFurigana: マコト
-                            externalId: "badoraba:T2M5A1B2"
+                            externalId: "T2M5A1B2"
                           - lastName: 松本
                             firstName: 大地
                             lastNameFurigana: マツモト
                             firstNameFurigana: ダイチ
-                            externalId: "badoraba:T2M6A1B2"
+                            externalId: "T2M6A1B2"
               with_org_id:
                 summary: organizationId を指定して協会に紐づけ
                 value:
@@ -462,7 +462,7 @@ paths:
                             firstName: 太郎
                             lastNameFurigana: ヤマダ
                             firstNameFurigana: タロウ
-                            externalId: "badoraba:T1M1A1B2"
+                            externalId: "T1M1A1B2"
       responses:
         "200":
           description: 成功
@@ -964,9 +964,10 @@ components:
         externalId:
           type: string
           description: |
-            外部サービスが採番するメンバーの一意識別子。`サービス名:ID本体` 形式（例: `badoraba:00000001`）。
+            外部サービスが採番するメンバーの一意識別子。
+            サービスプレフィックスはトークンの `service` フィールドからサーバー側で自動付与されるため、ID 本体のみを送信する。
             個人単位での外部 ID 管理に使用。participant レベルの `externalId` はペア単位、こちらは個人単位。省略可。
-          example: "badoraba:00000001"
+          example: "00000001"
 
     ImportTournamentResult:
       type: object
@@ -1048,8 +1049,9 @@ components:
         externalId:
           type: string
           description: |
-            外部サービスが採番するメンバーの一意識別子。`サービス名:ID本体` 形式（例: `badoraba:A1B2C3D4`）。省略可。
-          example: "badoraba:A1B2C3D4"
+            外部サービスが採番するメンバーの一意識別子。
+            サービスプレフィックスはトークンの `service` フィールドからサーバー側で自動付与されるため、ID 本体のみを送信する。省略可。
+          example: "A1B2C3D4"
 
     ImportTeamTournamentResult:
       type: object
